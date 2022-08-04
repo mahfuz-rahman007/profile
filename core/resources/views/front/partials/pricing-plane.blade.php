@@ -13,8 +13,8 @@
                 <div class="col-xl-4 col-md-6">
                     <div class="pricing-item">
                         <div class="pricing-deco">
-                            <div class="pricing-price"><span class="pricing-currency">{{ $pricingplan->currency }}</span>{{ $pricingplan->price }}</div>
                             <h3 class="pricing-title">{{ $pricingplan->plan_name }}</h3>
+                            <div class="pricing-price"><span class="pricing-currency">{{ $pricingplan->currency }}</span>{{ $pricingplan->price }}</div>
                         </div>
 
                         <div class="list">

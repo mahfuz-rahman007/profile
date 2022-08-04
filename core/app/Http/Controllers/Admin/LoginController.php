@@ -23,7 +23,6 @@ class LoginController extends Controller
 
         if(Auth::guard('admin')->attempt(['username' => $request->username,'password' => $request->password])){
 
-            // return redirect()->route('admin.dashboard');
             return  redirect(route('admin.dashboard'));
         }
         return redirect()->back()->with('alert', 'Username and password not matched');

@@ -37,10 +37,13 @@
 
                     </div>
                 </div>
-                <div class="col-lg-12 text-center">
-                    <a href="{{ asset('assets/front/file/' . $about->resume) }}" class="btn-button"
-                        download=""><span>Download Resume</span> </a>
-                </div>
+                @if ($setting->is_resume_download)
+                    <div class="col-lg-12 text-center">
+                        <a href="{{ asset('assets/front/file/' . $about->resume) }}" class="btn-button"
+                            download=""><span>Download Resume</span> </a>
+                    </div>
+                @endif
+
 
             </div>
         </section>

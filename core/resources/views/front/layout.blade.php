@@ -14,6 +14,7 @@
 
     <title>{{ $setting->website_title }}</title>
 
+    <link rel="shortcut icon" href="{{ asset('assets/front/img/'. $setting->fav_icon) }}" type="image/x-icon">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -52,44 +53,66 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li>
-                        <a
-                        href="@if(request()->path() == '/')#hero @else {{ route('front.index') }}#hero @endif"
-                         class="@if(request()->path() == '/') active @endif">Home</a>
-                    </li>
-                    <li>
-                        <a href="@if(request()->path() == '/')#about @else {{ route('front.index') }}#about @endif"  class=""> About</a>
-                    </li>
-                    <li>
-                        <a href="@if(request()->path() == '/')#resume @else {{ route('front.index') }}#resume @endif" class="">Resume</a>
-                    </li>
-                    <li>
-                        <a href="@if(request()->path() == '/')#service @else {{ route('front.index') }}#service @endif"  class="@if(request()->is('service-details/*')) active @endif">Services</a>
+                    @if ($setting->ishome)
+                        <li>
+                            <a
+                            href="@if(request()->path() == '/')#hero @else {{ route('front.index') }}#hero @endif"
+                            class="@if(request()->path() == '/') active @endif">Home</a>
+                        </li>
+                    @endif
 
-                    </li>
-                    <li>
-                        <a href="@if(request()->path() == '/')#portfolio @else {{ route('front.index') }}#portfolio @endif" class="@if(request()->path() == 'portfolios') active
-                            @elseif(request()->is('portfolio-details/*')) active
-                            @endif">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="@if(request()->path() == '/')#blog @else {{ route('front.index') }}#blog @endif" class="@if(request()->path() == 'blogs') active
-                                @elseif(request()->is('blog-details/*')) active
-                                @endif">Blog</a>
-                    </li>
-                    <li>
-                        <a href="@if(request()->path() == '/')#contact @else {{ route('front.index') }}#contact @endif" class="">Contact</a>
-                    </li>
+                    @if ($setting->isabout)
+                        <li>
+                            <a href="@if(request()->path() == '/')#about @else {{ route('front.index') }}#about @endif"  class=""> About</a>
+                        </li>
+                    @endif
+
+                    @if ($setting->isresume)
+                        <li>
+                            <a href="@if(request()->path() == '/')#resume @else {{ route('front.index') }}#resume @endif" class="">Resume</a>
+                        </li>
+                    @endif
+
+                    @if ($setting->isservice)
+                        <li>
+                            <a href="@if(request()->path() == '/')#service @else {{ route('front.index') }}#service @endif"  class="@if(request()->is('service-details/*')) active @endif">Services</a>
+                        </li>
+                    @endif
+
+                    @if ($setting->isportfolio)
+                        <li>
+                            <a href="@if(request()->path() == '/')#portfolio @else {{ route('front.index') }}#portfolio @endif" class="@if(request()->path() == 'portfolios') active
+                                @elseif(request()->is('portfolio-details/*')) active
+                                @endif">Portfolio</a>
+                        </li>
+                    @endif
+
+                    @if ($setting->isblog)
+                        <li>
+                            <a href="@if(request()->path() == '/')#blog @else {{ route('front.index') }}#blog @endif" class="@if(request()->path() == 'blogs') active
+                                    @elseif(request()->is('blog-details/*')) active
+                                    @endif">Blog</a>
+                        </li>
+                    @endif
+
+                    @if ($setting->iscontact)
+                        <li>
+                            <a href="@if(request()->path() == '/')#contact @else {{ route('front.index') }}#contact @endif" class="">Contact</a>
+                        </li>
+                    @endif
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-            <div class="header-social-links">
-                @foreach ($socials as $social)
-                 <a href="{{ $social->url }}" ><i class="{{ $social->icon }}"></i></a>
+            @if ($setting->is_home_social)
+                <div class="header-social-links">
+                    @foreach ($socials as $social)
+                    <a href="{{ $social->url }}" ><i class="{{ $social->icon }}"></i></a>
 
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
 
         </div>
 

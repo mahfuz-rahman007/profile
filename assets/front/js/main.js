@@ -220,6 +220,11 @@
         clickable: true
       }
     });
+
+        /**
+     * Clients slider
+     */
+      
   
     /**
      * Animation on scroll
@@ -267,6 +272,7 @@
                 }
             });
         }
+
 
     });
 

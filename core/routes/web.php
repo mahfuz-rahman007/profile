@@ -47,10 +47,6 @@ Route::group(['prefix'=>'admin' , 'middleware'=>'auth:admin'] ,function(){
     Route::get('/basicinfo' , 'Admin\SettingController@basicinfo')->name('admin.basicinfo');
     Route::post('/basicinfo/update' , 'Admin\SettingController@update_basicinfo')->name('admin.update_basicinfo');
 
-    //Home Version
-    Route::get('/homeversion' , 'Admin\SettingController@homeversion')->name('admin.homeversion');
-    Route::post('/homeversion/update' , 'Admin\SettingController@update_homeversion')->name('admin.update_homeversion');
-
     //Section Title
     Route::get('/sectiontitle' , 'Admin\SettingController@sectiontitle')->name('admin.sectiontitle');
     Route::post('/sectiontitle/update' , 'Admin\SettingController@updateSectiontitle')->name('admin.updateSectiontitle');

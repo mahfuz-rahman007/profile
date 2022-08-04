@@ -21,11 +21,13 @@ class HomeController extends Controller
         ]);
 
         $setting  = Setting::first();
-        if($request->hasFile('homearea_bg')){
-            @unlink('assets/front/img/'.$setting->homearea_bg);
+        if($request->hasFile('herosection_bg')){
+            @unlink('assets/front/img/herosection_bg');
 
-            $file = $request->file('homearea_bg');
-            $file->move('assets/front/img/','homearea_bg.jpg',);
+            $file = $request->file('herosection_bg');
+            $extension = $file->getClientOriginalExtension();
+            $herosection_bg = 'herosection_bg' . '.' . $extension;
+            $file->move('assets/front/img/', $herosection_bg);
         }
 
         $setting->save();

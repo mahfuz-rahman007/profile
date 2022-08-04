@@ -4,31 +4,53 @@
 
 @section('home')
 
-   @includeif('front.partials.home')
+    @if ($setting->ishome)
+     @includeif('front.partials.home')
+    @endif
 
 @endsection
 
 @section('content')
+    @if ($setting->isabout)
+        @includeif('front.partials.about')
+    @endif
 
-    @includeif('front.partials.about')
+    @if ($setting->isskill)
+        @includeif('front.partials.skill')
+    @endif
 
-    @includeif('front.partials.skill')
+    @if ($setting->isfunfact)
+        @includeif('front.partials.funfact')
+    @endif
 
-    @includeif('front.partials.funfact')
+    @if ($setting->isresume)
+        @includeif('front.partials.resume')
+    @endif
 
-    @includeif('front.partials.resume')
+    @if ($setting->isservice)
+        @includeif('front.partials.service')
+    @endif
 
-    @includeif('front.partials.service')
+    @if ($setting->isportfolio)
+        @includeif('front.partials.portfolio')
+    @endif
 
-    @includeif('front.partials.portfolio')
+    @if ($setting->ispricingplan)
+        @includeif('front.partials.pricing-plane')
+    @endif
 
-    @includeif('front.partials.pricing-plane')
+    @if ($setting->isblog)
+        @includeif('front.partials.blog')
+    @endif
 
-    @includeif('front.partials.blog')
+    @if ($setting->istestimonial)
+        @includeif('front.partials.testimonial')
+    @endif
 
-    @includeif('front.partials.testimonial')
+    @if ($setting->iscontact)
+        @includeif('front.partials.contact')
+    @endif
 
-    @includeif('front.partials.contact')
 
     {{-- @includeif('front.partials.client') --}}
 
